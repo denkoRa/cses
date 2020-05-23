@@ -32,5 +32,29 @@ typedef pair<int, int> pii;
 int main() {
   sync_cin;
 
+  int n; cin >> n;
+  vector<pii> movies;
+  for (int ii = 0; ii < n; ++ii) {
+    int a, b; cin >> a >> b;
+    movies.emplace_back(a, b);
+  }
+
+  sort(movies.begin(), movies.end(),
+       [](pii a, pii b) -> bool {
+         return a.second < b.second ||
+                (a.second == b.second && a.first < b.first);
+       });
+
+  int cur_end = movies[0].second;
+  int ans = 1;
+  for (int ii = 1; ii < sz(movies); ++ii) {
+    if (movies[ii].first >= cur_end) {
+      cur_end = movies[ii].second;
+      ++ans;
+    }
+  }
+
+  cout << ans << endl;
+
   return 0;
 }
