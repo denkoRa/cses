@@ -48,5 +48,23 @@ inline istream& operator>>(istream& is, pair<T1, T2>& p) {
 int main() {
   sync_cin;
 
+  int n; cin >> n;
+  vector<int> songs(n);
+  cin >> songs;
+
+  map<int, int> pos;
+  int ans = 0;
+  int tail = -1;
+
+  for (int ii = 0; ii < sz(songs); ++ii) {
+    const int cur_song = songs[ii];
+    if (pos.find(cur_song) != pos.end()) {
+      tail = max(tail, pos[cur_song]);
+    }
+    pos[cur_song] = ii;
+    ans = max(ans, ii - tail);
+  }
+
+  cout << ans << endl;
   return 0;
 }
