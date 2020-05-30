@@ -43,6 +43,17 @@ inline istream& operator>>(istream& is, pair<T1, T2>& p) {
   return is;
 }
 
+template<typename T>
+inline ostream& operator<<(ostream& os, vector<vector<T>>& mat) {
+  for (int ii = 0; ii < sz(mat); ++ii) {
+    for (int jj = 0; jj < sz(mat[0]); ++jj) {
+      os << mat[ii][jj] << " ";
+    }
+    os << endl;
+  }
+  return os;
+}
+
 //-----------------------------------------------------------------------------
 
 int main() {
