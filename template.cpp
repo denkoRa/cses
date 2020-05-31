@@ -9,6 +9,7 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
+#include <bitset>
 
 #define endl '\n'
 #define sync_cin                      \
