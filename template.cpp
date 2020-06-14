@@ -38,6 +38,14 @@ inline istream& operator>>(istream& is, vector<T>& v) {
   return is;
 }
 
+template<typename T>
+inline ostream& operator<<(ostream& os, vector<T>& v) {
+  for (int ii = 0; ii < sz(v); ++ii) {
+    os << v[ii] << " ";
+  }
+  return os;
+}
+
 template<typename T1, typename T2>
 inline istream& operator>>(istream& is, pair<T1, T2>& p) {
   is >> p.first >> p.second;
