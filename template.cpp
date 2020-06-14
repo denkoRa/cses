@@ -63,10 +63,25 @@ inline ostream& operator<<(ostream& os, vector<vector<T>>& mat) {
   return os;
 }
 
+template<typename it>
+void compress(it start, it end) {
+  typedef typename remove_reference<decltype(*start)>::type T;
+  map<T, vector<it>> m;
+  for (it ii = start; ii != end; ii++) {
+    m[*ii].push_back(ii);
+  }
+  int t = 0;
+  for (auto& [x, v] : m) {
+    for (auto& i : v) {
+      *i = t;
+    }
+    ++t;
+  }
+}
+
 //-----------------------------------------------------------------------------
 
 int main() {
   sync_cin;
-
   return 0;
 }
